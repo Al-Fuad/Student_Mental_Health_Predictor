@@ -219,7 +219,7 @@ export default function App() {
             </svg>
           </div>
           <div className="brand-text">
-            <h1>MindPulse AI</h1>
+            <h1>MindPlus AI</h1>
             <p>Student Mental Health Predictor &amp; Behavioral Insights</p>
           </div>
         </div>
