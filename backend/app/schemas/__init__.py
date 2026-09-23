@@ -1,15 +1,12 @@
-"""Backward compatibility re-exports for schemas."""
-
-from app.schemas import (
+from .health import HealthResponse
+from .model_info import (
     BenchmarkModel,
     FeatureImportance,
-    HealthResponse,
     ModelDetailsResponse,
     ModelMetrics,
     PipelineSpecs,
-    PredictionInput,
-    PredictionOutput,
 )
+from .prediction import PredictionInput, PredictionOutput
 
 __all__ = [
     "HealthResponse",
