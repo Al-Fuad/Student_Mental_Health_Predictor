@@ -10,8 +10,8 @@ def client():
         yield test_client
 
 
-def test_health_check(client):
-    response = client.get("/health")
+def test_health_check_v1(client):
+    response = client.get("/api/v1/health")
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "ok"
@@ -19,15 +19,8 @@ def test_health_check(client):
     assert "model_loaded" in data
 
 
-def test_health_check_v1(client):
-    response = client.get("/api/v1/health")
-    assert response.status_code == 200
-    data = response.json()
-    assert data["status"] == "ok"
-
-
 def test_model_details(client):
-    response = client.get("/model-details")
+    response = client.get("/api/v1/model-details")
     assert response.status_code == 200
     data = response.json()
     assert data["model_name"] == "Random Forest Regressor Pipeline"
@@ -53,7 +46,7 @@ def test_prediction_endpoint(client):
         "sleep_hours_per_night": 7.0,
         "stress_level": "Medium",
     }
-    response = client.post("/predict", json=payload)
+    response = client.post("/api/v1/predict", json=payload)
     assert response.status_code == 200
     data = response.json()
     assert 1.0 <= data["mental_health_score"] <= 10.0
@@ -84,7 +77,7 @@ def test_prediction_invalid_payload(client):
         "sleep_hours_per_night": 7.0,
         "stress_level": "Medium",
     }
-    response = client.post("/predict", json=invalid_payload)
+    response = client.post("/api/v1/predict", json=invalid_payload)
     assert response.status_code == 422
 
 

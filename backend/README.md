@@ -80,9 +80,9 @@ The API will be accessible at:
 
 | Method | Path | Description |
 | :--- | :--- | :--- |
-| `GET` | `/health` or `/api/v1/health` | Check service health and ML model status |
-| `GET` | `/model-details` or `/api/v1/model-details` | Model metrics, benchmarks, and feature importances |
-| `POST` | `/predict` or `/api/v1/predict` | Predict student mental health score (1.0 - 10.0 scale) |
+| `GET` | `/api/v1/health` | Check service health and ML model status |
+| `GET` | `/api/v1/model-details` | Model metrics, benchmarks, and feature importances |
+| `POST` | `/api/v1/predict` | Predict student mental health score (1.0 - 10.0 scale) |
 
 ---
 

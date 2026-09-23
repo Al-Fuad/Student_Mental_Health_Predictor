@@ -32,10 +32,7 @@ def create_application() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Mount routes at root for 100% backward compatibility with frontend
-    app.include_router(api_router)
-
-    # Also mount versioned API under /api/v1
+    # Mount versioned API under /api/v1
     app.include_router(api_router, prefix=settings.API_V1_STR)
 
     return app

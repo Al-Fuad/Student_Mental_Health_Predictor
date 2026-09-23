@@ -205,11 +205,11 @@ jupyter notebook notebooks/mental-health-score-notebook.ipynb
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/health` | Service health status & ML model readiness |
-| `GET` | `/model-details` | Full evaluation metrics, feature weights, and benchmarks |
-| `POST` | `/predict` | Predict mental health score from student metrics |
+| `GET` | `/api/v1/health` | Service health status & ML model readiness |
+| `GET` | `/api/v1/model-details` | Full evaluation metrics, feature weights, and benchmarks |
+| `POST` | `/api/v1/predict` | Predict mental health score from student metrics |
 
-### Sample Prediction Request (`POST /predict`)
+### Sample Prediction Request (`POST /api/v1/predict`)
 
 ```json
 {

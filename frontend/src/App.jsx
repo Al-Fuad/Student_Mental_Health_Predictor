@@ -114,7 +114,7 @@ export default function App() {
 
   const checkHealth = useCallback(async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/health`);
+      const res = await fetch(`${API_BASE_URL}/api/v1/health`);
       if (res.ok) {
         const data = await res.json();
         setApiStatus(data.model_loaded ? 'online' : 'offline');
@@ -128,7 +128,7 @@ export default function App() {
 
   const fetchModelDetails = useCallback(async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/model-details`);
+      const res = await fetch(`${API_BASE_URL}/api/v1/model-details`);
       if (res.ok) {
         const data = await res.json();
         setModelDetails(data);
@@ -184,7 +184,7 @@ export default function App() {
     setErrorMsg('');
 
     try {
-      const res = await fetch(`${API_BASE_URL}/predict`, {
+      const res = await fetch(`${API_BASE_URL}/api/v1/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
