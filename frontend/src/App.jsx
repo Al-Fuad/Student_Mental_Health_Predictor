@@ -117,11 +117,16 @@ export default function App() {
       const res = await fetch(`${API_BASE_URL}/api/v1/health`);
       if (res.ok) {
         const data = await res.json();
+        if (!data.model_loaded) {
+          console.warn('API is reachable, but model is not loaded:', data);
+        }
         setApiStatus(data.model_loaded ? 'online' : 'offline');
       } else {
+        console.error(`Health check failed with status ${res.status}:`, res.statusText);
         setApiStatus('offline');
       }
-    } catch {
+    } catch (err) {
+      console.error(`Failed to connect to API at ${API_BASE_URL}/api/v1/health:`, err);
       setApiStatus('offline');
     }
   }, []);
@@ -133,8 +138,8 @@ export default function App() {
         const data = await res.json();
         setModelDetails(data);
       }
-    } catch {
-      // Retains default specs
+    } catch (err) {
+      console.warn('Could not fetch model details from backend:', err);
     }
   }, []);
 
