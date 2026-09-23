@@ -4,7 +4,8 @@ import ModelDetailsModal from './components/ModelDetailsModal';
 import ModelDetailsView from './components/ModelDetailsView';
 import { DEFAULT_MODEL_DETAILS } from './components/modelDetailsData';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const RAW_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = RAW_API_URL.replace(/\/+$/, '');
 
 const INITIAL_FORM = {
   age: 21,
@@ -244,7 +245,7 @@ export default function App() {
 
           <div className={`api-status-badge ${apiStatus}`}>
             <span className="status-dot"></span>
-            <span>{apiStatus === 'online' ? 'Backend Ready (Port 8000)' : apiStatus === 'checking' ? 'Connecting to API...' : 'Backend Offline'}</span>
+            <span>{apiStatus === 'online' ? (import.meta.env.VITE_API_URL ? 'Backend Online' : 'Backend Ready (Port 8000)') : apiStatus === 'checking' ? 'Connecting to API...' : 'Backend Offline'}</span>
           </div>
         </div>
       </header>
